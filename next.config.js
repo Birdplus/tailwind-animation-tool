@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 核心：让编译器跳过 ESLint 检查
   eslint: {
-    // 告诉 Next.js 在生产构建时忽略 ESLint 错误
     ignoreDuringBuilds: true,
   },
+  // 核心：让编译器跳过 TypeScript 类型检查
   typescript: {
-    // 如果有类型错误也一并忽略，确保能顺利发布
     ignoreBuildErrors: true,
   },
 };
