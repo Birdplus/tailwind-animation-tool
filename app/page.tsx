@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Github, MessageSquare } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function Home() {
@@ -100,12 +100,48 @@ export default function Home() {
       {/* Header */}
       <header className="border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Tailwind CSS Custom Animation Generator
-          </h1>
-          <p className="text-muted-foreground mt-2">
-            Create beautiful custom animations with live preview and export ready-to-use code
-          </p>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Tailwind CSS Custom Animation Generator
+              </h1>
+              <p className="text-muted-foreground mt-2">
+                Create beautiful custom animations with live preview and export ready-to-use code
+              </p>
+            </div>
+            <div className="flex items-center gap-3 ml-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild
+                className="flex items-center gap-2"
+              >
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View on GitHub"
+                >
+                  <Github className="h-4 w-4" />
+                  <span className="hidden sm:inline">GitHub</span>
+                </a>
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild
+                className="flex items-center gap-2"
+              >
+                <a
+                  href="mailto:feedback@tailwind-animate.com?subject=Feedback%20for%20Tailwind%20Animate"
+                  aria-label="Send feedback"
+                >
+                  <MessageSquare className="h-4 w-4" />
+                  <span className="hidden sm:inline">Feedback</span>
+                </a>
+              </Button>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -420,6 +456,166 @@ export default function Home() {
               </article>
             </CardContent>
           </Card>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="mt-12 mb-8">
+          <div className="max-w-4xl mx-auto">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl">Frequently Asked Questions</CardTitle>
+                <CardDescription>Common questions about Tailwind CSS custom animations</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger className="text-left">
+                      How to add custom keyframes in Tailwind?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-700 dark:text-slate-300">
+                      <p className="leading-relaxed mb-3">
+                        To add custom keyframes in Tailwind CSS, you need to extend your <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">tailwind.config.js</code> file. In the <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">theme.extend.keyframes</code> section, define your keyframes as objects where each key represents a point in the animation timeline (typically 0% to 100%).
+                      </p>
+                      <p className="leading-relaxed mb-3">
+                        For example:
+                      </p>
+                      <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs mb-3">
+                        <code>{`module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        'custom-animation': {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-20px)' },
+        },
+      },
+    },
+  },
+}`}</code>
+                      </pre>
+                      <p className="leading-relaxed">
+                        Then, reference these keyframes in the <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">theme.extend.animation</code> section to create reusable animation utilities.
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger className="text-left">
+                      What is the default duration in Tailwind?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-700 dark:text-slate-300">
+                      <p className="leading-relaxed mb-3">
+                        Tailwind CSS doesn't set a default duration for animations. However, when you define animations in your config, you specify the duration as part of the animation shorthand property. The default duration utilities in Tailwind range from <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">duration-75</code> (75ms) to <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">duration-1000</code> (1000ms).
+                      </p>
+                      <p className="leading-relaxed mb-3">
+                        Common duration values include:
+                      </p>
+                      <ul className="list-disc list-inside space-y-1 mb-3 text-sm">
+                        <li><code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">duration-150</code> - 150ms (quick micro-interactions)</li>
+                        <li><code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">duration-300</code> - 300ms (standard transitions)</li>
+                        <li><code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">duration-500</code> - 500ms (moderate animations)</li>
+                        <li><code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">duration-1000</code> - 1000ms (slow, dramatic animations)</li>
+                      </ul>
+                      <p className="leading-relaxed">
+                        For custom animations, you can specify any duration value directly in your animation definition, such as <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">'custom-animation': 'custom-keyframe 1s ease-in-out'</code>.
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger className="text-left">
+                      How do I loop a Tailwind animation infinitely?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-700 dark:text-slate-300">
+                      <p className="leading-relaxed mb-3">
+                        To loop a Tailwind animation infinitely, you can set the iteration count to "infinite" in your animation definition. In your <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">tailwind.config.js</code>, add <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">infinite</code> as the last value in your animation shorthand.
+                      </p>
+                      <p className="leading-relaxed mb-3">
+                        Example:
+                      </p>
+                      <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs mb-3">
+                        <code>{`animation: {
+  'spin-slow': 'spin 3s linear infinite',
+  'bounce-infinite': 'bounce 1s ease-in-out infinite',
+}`}</code>
+                      </pre>
+                      <p className="leading-relaxed">
+                        You can also use arbitrary values directly in your HTML: <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">animate-[spin_3s_linear_infinite]</code>. Alternatively, use the iteration count utility classes or set iteration to 0 in this generator tool to create infinite animations.
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-4">
+                    <AccordionTrigger className="text-left">
+                      Can I use custom easing functions in Tailwind animations?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-700 dark:text-slate-300">
+                      <p className="leading-relaxed mb-3">
+                        Yes! Tailwind CSS supports custom easing functions in animations. You can use standard CSS easing keywords like <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">ease-in</code>, <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">ease-out</code>, <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">ease-in-out</code>, <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">linear</code>, or custom cubic-bezier functions.
+                      </p>
+                      <p className="leading-relaxed mb-3">
+                        In your animation definition:
+                      </p>
+                      <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs mb-3">
+                        <code>{`animation: {
+  'custom-ease': 'custom-keyframe 1s cubic-bezier(0.4, 0, 0.2, 1)',
+}`}</code>
+                      </pre>
+                      <p className="leading-relaxed">
+                        You can also extend Tailwind's easing theme in your config to create reusable custom easing functions that work across your entire project, making it easier to maintain consistent animation timing throughout your application.
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-5">
+                    <AccordionTrigger className="text-left">
+                      How do I combine multiple transforms in a Tailwind animation?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-700 dark:text-slate-300">
+                      <p className="leading-relaxed mb-3">
+                        You can combine multiple CSS transform properties in a single animation by including them all in your keyframe definition. Tailwind allows you to specify translate, rotate, scale, and skew transforms together.
+                      </p>
+                      <p className="leading-relaxed mb-3">
+                        Example combining multiple transforms:
+                      </p>
+                      <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs mb-3">
+                        <code>{`keyframes: {
+  'slide-rotate': {
+    '0%': {
+      transform: 'translateX(-100px) rotate(0deg) scale(1)',
+    },
+    '100%': {
+      transform: 'translateX(0) rotate(360deg) scale(1.2)',
+    },
+  },
+}`}</code>
+                      </pre>
+                      <p className="leading-relaxed">
+                        This tool's generator allows you to adjust translate X/Y, rotate, and scale simultaneously, and you can copy the generated keyframes directly into your Tailwind config. The transforms are applied in the order they appear in the transform property.
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-6">
+                    <AccordionTrigger className="text-left">
+                      Are Tailwind custom animations compatible with React and Next.js?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-700 dark:text-slate-300">
+                      <p className="leading-relaxed mb-3">
+                        Absolutely! Tailwind CSS custom animations work seamlessly with React and Next.js. Since Tailwind CSS is framework-agnostic and compiles to regular CSS, your custom animations will work in any React component or Next.js page.
+                      </p>
+                      <p className="leading-relaxed mb-3">
+                        In Next.js, simply configure your <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">tailwind.config.js</code> in the root directory and your custom animations will be available throughout your application. You can use them directly in JSX className attributes.
+                      </p>
+                      <p className="leading-relaxed">
+                        Example in a React component: <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-sm">&lt;div className="animate-custom-animation"&gt;Content&lt;/div&gt;</code>. The animations compile during the build process and work exactly like standard Tailwind utility classes.
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </CardContent>
+            </Card>
+          </div>
         </section>
       </main>
 
