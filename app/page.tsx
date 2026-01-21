@@ -617,6 +617,51 @@ export default function Home() {
             </Card>
           </div>
         </section>
+
+        {/* Why use a Tailwind Animation Generator? (SEO) */}
+        <section className="mt-12 mb-8">
+          <div className="max-w-4xl mx-auto">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl">Why use a Tailwind Animation Generator?</CardTitle>
+                <CardDescription>
+                  Faster workflows, cleaner configs, and better motion design—without guesswork.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="prose prose-slate dark:prose-invert max-w-none">
+                <article className="space-y-4 text-slate-700 dark:text-slate-300">
+                  <p className="leading-relaxed">
+                    When you’re searching for a <strong>tailwind animation generator</strong>, you’re usually trying to
+                    solve the same problem: you want consistent motion, but you don’t want to hand-write and tweak
+                    keyframes across multiple components. This tool gives you a visual preview and a reliable export
+                    format, so you can iterate on motion the same way you iterate on layout—quickly, with immediate
+                    feedback.
+                  </p>
+                  <p className="leading-relaxed">
+                    Tailwind makes it easy to apply utility classes, but <strong>tailwind css animation</strong> becomes
+                    truly powerful when you define <strong>custom keyframes</strong>. Custom keyframes let you create
+                    brand-specific motion (subtle slides, rotations, scaling, and combinations) that feels intentional
+                    and reusable. Instead of sprinkling ad-hoc CSS in different files, you can centralize animations in
+                    your Tailwind theme and keep the rest of your UI purely class-driven.
+                  </p>
+                  <p className="leading-relaxed">
+                    A generator also reduces “copy/paste drift.” As your project grows, small differences in duration,
+                    delay, and iteration count can make the UI feel inconsistent. With a single source of truth, you can
+                    standardize timing and reuse the same animation across pages, marketing sections, and product UI.
+                    That’s especially helpful in React and Next.js apps where components are shared widely.
+                  </p>
+                  <p className="leading-relaxed">
+                    Finally, if you’re using <strong>tailwindcss-animate</strong> or extending Tailwind’s animation
+                    utilities yourself, this tool saves developer time by generating the exact <code>tailwind.config.js</code>{" "}
+                    extension and class usage you need. You get fewer trial-and-error rebuilds, cleaner diffs in your
+                    config, and a more polished result—while keeping performance-friendly transforms and predictable
+                    animation behavior.
+                  </p>
+                </article>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
